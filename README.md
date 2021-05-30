@@ -62,10 +62,10 @@ Messages are to be sent via https (?AJAX) POST on port 7575 their data structure
       	to: UUID of Peer of which the public key is requested
       }
     response body:
-      {
+			encrypted {
       	pub_key: public key of Peer of which the public key is requested
-      	auth_phrase: encrypted auth phrase
-      	secret: encrypted secret
+      	auth_phrase: auth phrase
+      	secret: secret
       } 
     ```
 They are to be answered either with an error code when an error occurs or with status 200 and authentication.
