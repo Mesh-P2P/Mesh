@@ -35,16 +35,6 @@ Messages are to be sent via https (?AJAX) POST on port 7575 their data structure
         referent: UUID of the Peer refferred to
         hops: distance to referent in hops
       }
-    ```
-  * connect:
-    ```
-    header:
-      {
-        from: encrypted (?unique per contact) UUID of sender of request
-        auth: authentication data
-        type: "connect"
-      }
-    ```
   * message:
     ```
     header:
@@ -57,20 +47,6 @@ Messages are to be sent via https (?AJAX) POST on port 7575 their data structure
       {
         body: encrypted message
       }
-    ```
-  * UUID check:
-    ```
-    header:
-      {
-        (optional) from: (?unique per contact) UUID of sender of request
-        (optional) auth: authentication data
-        type: "UUID_check"
-      }
-    body:
-      {
-        to: UUID of Peer of which the public key is requested
-      }
-    ```
   * contact request:
     ```
     header:
