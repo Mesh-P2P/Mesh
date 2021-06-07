@@ -13,7 +13,7 @@ Messages are to be sent via https (?AJAX) POST on port 7575 their data structure
         auth: authentication data
         type: "IP"
       }
-    body:
+    request body:
       {
         to: UUID of the receipient
         from: encrypted (?unique per contact) UUID of sender
@@ -21,6 +21,11 @@ Messages are to be sent via https (?AJAX) POST on port 7575 their data structure
         IP: encrypted IP of sender
         hops: distance to sender in hops
       }
+    response body:
+    	{
+				IP: encrypted IP of receipient
+				secret: encrypted secret
+			}
     ```
   * referral (?better name):
     ```
