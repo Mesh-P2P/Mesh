@@ -12,25 +12,25 @@ Messages are to be sent via https (?AJAX) POST to port 7575 their data structure
         from: (?unique per contact) UUID of sender of request
         secret: secret
         type: "IP"
-				(optional) pub_key: public key of sender
+	(optional) pub_key: public key of sender
       }
     request body:
       {
         to: UUID of the receipient
         encrypted: {
-					from: (?unique per contact) UUID of sender
-        	secret: secret
-        	IP: IP of sender
-				}
+	  from: (?unique per contact) UUID of sender
+          secret: secret
+          IP: IP:PORT of sender
+	}
         hops: distance to sender in hops
       }
     response body:
     	{
-				encrypted: {
-					IP: IP of receipient
-					secret: secret
-				}
-			}
+	  encrypted: {
+	    IP: IP:PORT of receipient
+	    secret: secret
+	  }
+	}
     ```
   * referral (?better name):
     ```
@@ -53,7 +53,7 @@ Messages are to be sent via https (?AJAX) POST to port 7575 their data structure
         secret: secret
         type: "message"
       }
-    body:	message
+    body: message
   * contact request:
     ```
     header:
@@ -61,16 +61,16 @@ Messages are to be sent via https (?AJAX) POST to port 7575 their data structure
         from: (?unique per contact) UUID of sender of request
         secret: secret
         type: "contact_req"
-				(optional) pub_key: public key of sender
+	(optional) pub_key: public key of sender
       }
     request body:
       {
       	pub_key: public key of the sender
-				from: UUID of sender
+	from: UUID of sender
       	to: UUID of Peer of which contact is requested
       }
     response body:
-			encrypted {
+      encrypted {
       	pub_key: public key of Peer of which the public key is requested
       	auth_phrase: auth phrase
       	secret: secret
@@ -79,7 +79,7 @@ Messages are to be sent via https (?AJAX) POST to port 7575 their data structure
 Clarifications:
 	1. headers are for message type and direct connection information.
 	2. the optional pub_key part of the header is for first contact (peers with domains) with the mesh
-They are to be answered either with an error code when an error occurs or with status 200 and authentication.
+They are to be answered either with an error code when an error occurs or with status 200, the encrypted secret and the IP:PORT they received the message from.
 
 Peers store:
   1. contacts: UUID, IP, public key (encrypt), secret
