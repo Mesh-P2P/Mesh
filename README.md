@@ -84,7 +84,7 @@ They are to be answered either with an error code when an error occurs or with s
 Peers store:
   1. contacts: UUID, IP, public key (encrypt), secret
   2. refferals: UUID of the Peer refferred to, distance to referent in hops, UUIDs of the Peers to relay to
-  3. information about self: private key (decrypt), public key, UUID
+  3. information about self: private key (decrypt), public key, UUID, IP:PORT
 
 Peers process incoming messages as follows:
 
