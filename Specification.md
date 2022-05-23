@@ -6,6 +6,8 @@
 1. Base Data Envelope
 2. Message Types
 3. Common Data Definitions
+4. 3rd Party Message Types
+5. Spec Changes (ToDo)
 ## 0. Preliminaries
 ### 0.i Terminology
 * (opt) - optional
@@ -213,3 +215,11 @@ Used to exchange contact information between nodes, with only the id and a presh
 | 1      | Not reachable (for Route/Broadcast) | 
 | 2      | unsupported message type            |
 | 3      | Unauthenticated                     |
+## 4. 3rd Party Message Types
+### Tunnel (Type 5)
+| Byte      | 0     | 1-16     | 2-3    | 4-n     |
+|-----------|-------|----------|--------|---------|
+| Content   | TTL   | Receiver | ID     | Packet  |
+| Data type | UInt8 | UUID     | UInt16 |         |
+
+Tunnels are like Route messages, but the Path persists until it is closed, all messages after the first are treated as responses.
