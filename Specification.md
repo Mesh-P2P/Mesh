@@ -178,6 +178,7 @@ Used for hole punching as follows:
    2. A resends the message with a supported type
 4. B sends its Port and IP back
 5. B tries to connect to A and A tries to connect to B
+6. A and B establish a TLS connection, the one, that succeded in connecting, is the client, the other the server. The certificats are self-signed.
 #### Contact Request (Type 4.1)
 **encrypted with preshared key**
 ##### Request:
