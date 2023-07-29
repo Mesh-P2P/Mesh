@@ -40,6 +40,8 @@ Same as any Message Type (opt)
 |-----------|---------------------|-------|-------|-----------|
 | Content   | Length of Type Data | ID    | Type  | Type Data |
 | Data type | UInt16              | UInt8 | UInt8 |           |
+
+The ID here is used only within each connection, it is used primarly to indicate what we respond to.
 ## 2. Message Types
 ### Response (Type 0)
 | Byte      | 0-n     |
@@ -47,7 +49,7 @@ Same as any Message Type (opt)
 | Content   | Message | 
 | Data type |         |
 
-A response to a message, its Message and reaction is specified in the Response part of the Message Type.
+A response to a message, its Message and reaction is specified in the Response part of the Message Type. Its ID in the Base Data Envelope is the same as the message it responds to.
 ### Direct (Type 1)
 | Byte      | 0-n     |
 |-----------|---------|
@@ -143,10 +145,10 @@ A TTL limit (>3) may be set to reduce traffic, if a message has a higher TTL, it
 | Content   | TTL   | Receiver | SubType | SubType Data |
 | Data type | UInt8 | UUID     | UInt8   |              |
 ##### Response:
-| Byte      | 0-1                  | 2-n        | n-(n+2)              | (n+2)-m    |...|
-|-----------|----------------------|------------|----------------------|------------|---|
-| Content   | Length of response a | Response a | Length of response b | Response b |...|
-| Data type | UInt16               | Response   | UInt16               | Response   |...|
+| Byte      | 0-n                   | n-m      |
+|-----------|-----------------------|----------|
+| Content   | Signature of response | Response |
+| Data type | Signature             | Response |
 ###### Individual Response on failure
 | Byte      | 0      |
 |-----------|--------|
